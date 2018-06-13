@@ -9,9 +9,11 @@
                 <a v-on:click="removeElement(index);" style="cursor: pointer">Remove</a>
             </div>
             <a @click="addRow">Adım Ekle</a>
+            <br>
+            <input type="text" v-model="editedPost.category" placeholder="Kategori">
             <p>Meta</p>
             <div class="meta">
-                <input type="text" placeholder="Meta desc" v-model="editedPost.meta.descripton">
+                <input type="text" placeholder="Meta desc" v-model="editedPost.meta.description">
                 <input type="text" placeholder="Meta desc" v-model="editedPost.meta.keywords">
             </div>
           <input type="text" v-model="editedPost.author" placeholder="Yazar">

@@ -15,9 +15,9 @@ const createStore = () => {
             setToken(state, token) {
                 state.token = token
             },
-            // clearToken(state) {
-            //     state.token = null
-            // }
+            clearToken(state) {
+                state.token = null
+            }
         },
         actions: {
             nuxtServerInit(vuexContext, context) {
@@ -56,11 +56,6 @@ const createStore = () => {
                     console.log(e);
                 });
             },
-            setLogoutTimer(vuexContext, duration) {
-                setTimeout(() => {
-                    vuexContext.commit('clearToken')
-                }, duration)
-            },
             initAuth(vuexContext, req) {
                 let token;
                 let expirationDate;
@@ -84,13 +79,21 @@ const createStore = () => {
                   expirationDate = localStorage.getItem("tokenExpiration");
                 }
                 if (new Date().getTime() > +expirationDate || !token) {
-                  console.log("No token or invalid token");
-                  vuexContext.dispatch("logout");
-                  return;
+                    console.log("No token or invalid token");
+                    vuexContext.dispatch("logout");
+                    return;
                 }
                 vuexContext.commit("setToken", token);
               },
-
+              logout(vuexContext) {
+                vuexContext.commit("clearToken");
+                Cookie.remove("jwt");
+                Cookie.remove("expirationDate");
+                if (process.client) {
+                  localStorage.removeItem("token");
+                  localStorage.removeItem("tokenExpiration");
+                }
+              }
         },
         getters: {
             loadedPosts(state) {

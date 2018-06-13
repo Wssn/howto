@@ -15,7 +15,7 @@
             
             </li>
         </ul>
-    {{slug}}
+    <!-- {{slug}} -->
     </div>
 </template>
 

@@ -1,10 +1,16 @@
 <template>
-<div>
-  <!-- <h1>slug {{ loadedPost.id }}</h1> -->
-  <div v-for="post in loadedPost" :key="post.title"> 
-  {{ post.author }}
-  {{ post.title }}
-  </div>
+  <div>
+    <!-- <div v-for="post in post" :key="post.title"> 
+      <h1>{{ post.title }}</h1>
+      <div class="post-category">
+        <span>{{ post.category }}</span>
+      </div>
+      <div class="post-content">
+        <div class="post-row" v-for="step in post.steps" :key="step.id">
+          <span class="row-count">{{ step.id }}</span>
+        </div>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -12,38 +18,39 @@
 import Vuex from "vuex"
 import axios from "axios"
 
+
 export default {
   data() {
     return {
-      loadedPost: []
+      post: []
     }
   },
   async asyncData({params}) {
     return axios.get('https://howto-a9089.firebaseio.com/posts.json?orderBy="slug"&equalTo=' + '"' + params.slug + '"' + '&print=pretty')
       .then(res => {
         return {
-          loadedPost: res.data
+          post: res.data
         }
       })
       // .catch(e => context.error(e))
   },
-    // head() {
-    //   return {
-    //     title: loadedPost.title,
-    //     meta: [
-    //       {
-    //         hid: `description`,
-    //         name: 'description',
-    //         content: loadedPost.meta.descripton
-    //       },
-    //       {
-    //         hid: `keywords`,
-    //         name: 'keywords',
-    //         keywords: loadedPost.meta.keywords
-    //       }
-    //     ]
-    //   }
-    // } 
+    head() {
+      return {
+        // title: this.post.title,
+        meta: [
+          {
+            hid: `description`,
+            name: 'description',
+            // content: loadedPost.meta.descripton
+          },
+          {
+            hid: `keywords`,
+            name: 'keywords',
+            // keywords: loadedPost.meta.keywords
+          }
+        ]
+      }
+    } 
   }
  
 </script>

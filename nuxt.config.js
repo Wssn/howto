@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const cfg = require('./config')
 
 module.exports = {
   mode: 'universal',
@@ -14,7 +15,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;subset=latin-ext' }
     ]
   },
   
@@ -28,6 +30,9 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '@/assets/css/style.css',
+    // SCSS file in the project
+    '@/assets/css/style.scss'
   ],
 
   /*
@@ -41,13 +46,18 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'bootstrap-vue/nuxt',
   ],
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  env: {
+    fbAPI: cfg.apiKey
   },
 
   /*

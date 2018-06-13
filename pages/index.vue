@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-      <!-- <Header /> -->
+      <Header />
       <PostList :posts="loadedPosts"/>
   </section>
 </template>
