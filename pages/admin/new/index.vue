@@ -9,6 +9,7 @@ export default {
   components: {
       AdminPostForm
   },
+  layout: 'admin',
   middleware: ['check-auth', 'auth']
 }
 </script>
