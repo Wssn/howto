@@ -1,14 +1,23 @@
 <template>
-  <div>
-    <h1>{{ result.title }}</h1>
-      {{ result.category }}
-      <hr>
-      <div v-for="step in result.steps" :key="step.id"> 
-        {{ step.title }} <br>
-        {{ step.desc }}
-        <hr>
+    <section class="container mt-5" itemscope itemtype="http://schema.org/Article">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h1 itemprop="name">{{ result.title }}</h1>
+          <a class="button-shadow pink mb-4 mt-3">{{ result.category }}</a>
+          <div class="box" itemprop="articleBody">
+            <div v-for="step in result.steps" :key="step.id" class="step-container d-flex"> 
+              <div class="step-left mr-3">
+                <span class="step-count">{{ step.id }}</span>
+              </div>
+              <div class="step-right">
+                <p class="step-title">{{ step.title }}</p>
+                <p v-if="step.desc" class="step-desc mt-2">{{ step.desc }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
+    </section>
 </template>
 
 <script>
@@ -27,6 +36,7 @@ export default {
         }
     })
   },
+  layout: 'default',
   head() {
     return {
       title: this.result.title,

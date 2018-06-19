@@ -29,7 +29,7 @@ export default {
             })
             .then(() => {
                 // if(this.$store.state.token != null) {
-                    this.$router.push('/admin')
+                    this.$router.push('/admin/new')
                 // }
             })
         }

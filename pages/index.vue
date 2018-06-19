@@ -1,19 +1,17 @@
 <template>
-  <section class="container">
-      <Header />
+  <section>
       <PostList :posts="loadedPosts"/>
   </section>
 </template>
 
 <script>
 import PostList from '@/components/Posts/PostList'
-import Header from '@/components/Navigation/Header'
 import Vuex from 'vuex'
 export default {
   components: {
-    PostList,
-    Header
+    PostList
   },
+  layout: 'default',
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts

@@ -1,36 +1,69 @@
 <template>
   <section>
-      <b-container>
-        <b-form-group id="exampleInputGroup1"
-                        label="Email address:"
-                        label-for="exampleInput1">
-            <b-form-input id="exampleInput1"
-                        type="email"
-                        required
-                        placeholder="Enter email">
-            </b-form-input>
-        </b-form-group>
+      <b-container class="col-md-8">
         <form @submit.prevent="onSave">
-            <input type="text" v-model="editedPost.title" placeholder="Başlık"> <br>
-                <div class="step" v-for="(steps, index) in editedPost.steps" :key="steps.id">
-                    <input type="text" v-model="steps.title" placeholder="Adım 1">
-                    <input type="text" v-model="steps.desc" placeholder="Adım açıklama">
-                    <input type="text" v-model="steps.file">
-                    <a v-on:click="removeElement(index);" style="cursor: pointer">Remove</a>
-                </div>
-                <a @click="addRow">Adım Ekle</a>
-                <br>
-                <input type="text" v-model="editedPost.category" placeholder="Kategori">
-                <p>Meta</p>
-                <div class="meta">
-                    <input type="text" placeholder="Meta desc" v-model="editedPost.meta.description">
-                    <input type="text" placeholder="Meta desc" v-model="editedPost.meta.keywords">
-                </div>
-            <input type="text" v-model="editedPost.author" placeholder="Yazar">
-            <button>Gönder</button>
-            <br>
-            {{ editedPost.steps }} <br>
-            {{ editedPost.meta }}
+            <b-form-group id="titleGroup"
+                        label="Başlık"
+                        label-for="titleInput">
+                <b-form-input id="titleInput"
+                            type="text"
+                            
+                            v-model="editedPost.title"
+                            placeholder="Başlık">
+                </b-form-input>
+            </b-form-group>
+
+            <div class="step mb-3" v-for="(steps, index) in editedPost.steps" :key="steps.id" style="background: #f0f0f0; padding: 10px;">
+                <b-form-group label="Adım Başlık">
+                    <b-form-input type="text"
+                                
+                                v-model="steps.title"
+                                placeholder="Adım Başlık">
+                    </b-form-input>
+                </b-form-group>
+                <b-form-group label="Adım Açıklama">
+                    <b-form-input type="text"
+                                
+                                v-model="steps.desc"
+                                placeholder="Adım Açıklama">
+                    </b-form-input>
+                </b-form-group>
+                <b-button @click="removeElement(index);" :size="'sm'" :variant="'link'">Adımı Sil</b-button>
+            </div>
+            <b-button @click="addRow" :size="'sm'" :variant="'primary'" class="mb-4">Adım Ekle</b-button>
+            <b-form-group label="Kategori">
+                <b-form-input type="text"
+                            
+                            v-model="editedPost.category"
+                            placeholder="Kategori">
+                </b-form-input>
+            </b-form-group>
+
+            <h5>SEO</h5>
+            <div class="meta">
+                <b-form-group label="Meta Açıklama">
+                    <b-form-input type="text"
+                                
+                                v-model="editedPost.meta.description"
+                                placeholder="Meta Açıklama">
+                    </b-form-input>
+                </b-form-group>
+                <b-form-group label="Meta Anahtar Kelimeler">
+                    <b-form-input type="text"
+                                
+                                v-model="editedPost.meta.keywords"
+                                placeholder="Meta Anahtar Kelime">
+                    </b-form-input>
+                </b-form-group>
+            </div>
+            <b-form-group label="Yazar">
+                <b-form-input type="text"
+                            
+                            v-model="editedPost.author"
+                            placeholder="Yazar">
+                </b-form-input>
+            </b-form-group>
+            <b-button :variant="'success'" type="button">Gönder</b-button>
         </form>
       </b-container>
   </section>
@@ -61,7 +94,7 @@ export default {
   },
   methods: {
         onSave(vuexContext, editedPost) {
-            console.log(this.editedPost)
+            // console.log(this.editedPost)
             axios.post('https://howto-a9089.firebaseio.com/posts.json?auth=' + this.$store.state.token, this.editedPost)
                  .then(result => console.log(result))
                  .catch(e => console.log(e))
@@ -75,7 +108,7 @@ export default {
             });
         },
         removeElement: function(index) {
-            this.editedPost.step.splice(index, 1);
+            this.editedPost.steps.splice(index, 1);
         }
   }
 }
