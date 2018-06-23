@@ -6,7 +6,8 @@ const createStore = () => {
     return new Vuex.Store({
         state: {
             loadedPosts: [],
-            token: null
+            token: null,
+            categories: []
         },
         mutations: {
             setPosts(state, posts) {
@@ -15,12 +16,15 @@ const createStore = () => {
             setToken(state, token) {
                 state.token = token
             },
-            clearToken(state) {
+            clearToken(state, to) {
                 state.token = null
+            },
+            setCategories(state, categories) {
+                state.categories = categories
             }
         },
         actions: {
-            nuxtServerInit(vuexContext, context) {
+            nuxtServerInit(vuexContext) {
                 return axios.get('https://howto-a9089.firebaseio.com/posts.json')
                     .then(res => {
                         const postArray = []
@@ -28,6 +32,10 @@ const createStore = () => {
                             postArray.push({ ...res.data[key], id: key })
                         }
                         vuexContext.commit('setPosts', postArray)
+                    }),
+                    axios.get('https://howto-a9089.firebaseio.com/categories.json')
+                        .then(res => {
+                        vuexContext.commit('setCategories', res.data)
                     })
             },
             authenticateUser(vuexContext, authData) {
@@ -101,7 +109,11 @@ const createStore = () => {
             },
             isAuthenticated(state) {
                 return state.token != null
-            }
+            },
+            getCategories(state) {
+                return state.categories
+            },
+            
 
         }
     })

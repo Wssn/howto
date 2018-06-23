@@ -1,21 +1,9 @@
 <template>
     <div>
-        <!-- <nuxt-link :to="postLink"> -->
         <nuxt-link :to="{name: 'category-slug', params: { slug: slug, id: id, category: category } }">
-            <article>
                 <p>{{title}}</p>
-                <!-- <p>{{stepCount}}</p> -->
-            </article>
         </nuxt-link>
-        <ul>
-            <li v-for="step in steps" :key="step.title">
-                <p>{{step.title}}</p>
-                <p>{{step.desc}}</p>
-                <p>{{step.file}}</p>
-            
-            </li>
-        </ul>
-    <!-- {{slug}} -->
+                <p>{{steps.length}}</p>
     </div>
 </template>
 
