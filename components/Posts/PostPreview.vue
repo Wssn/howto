@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="box post-box mb-3">
         <nuxt-link :to="{name: 'category-slug', params: { slug: slug, id: id, category: category } }">
-                <p>{{title}}</p>
+            <p class="post-box-title">{{title}}</p>
         </nuxt-link>
-                <p>{{steps.length}}</p>
+        <p class="post-box-count">{{steps.length}} adım</p>
     </div>
 </template>
 

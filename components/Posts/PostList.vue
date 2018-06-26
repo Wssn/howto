@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="col-md-8 offset-md-2 mt-5">
         <PostPreview
             v-for="post in posts" :key="post.id"
             :id="post.id"

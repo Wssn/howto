@@ -63,7 +63,7 @@
                             placeholder="Yazar">
                 </b-form-input>
             </b-form-group>
-            <b-button :variant="'success'" type="button">Gönder</b-button>
+            <b-button :variant="'success'" type="submit">Gönder</b-button>
         </form>
       </b-container>
   </section>

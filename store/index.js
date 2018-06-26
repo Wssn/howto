@@ -16,7 +16,7 @@ const createStore = () => {
             setToken(state, token) {
                 state.token = token
             },
-            clearToken(state, to) {
+            clearToken(state) {
                 state.token = null
             },
             setCategories(state, categories) {
@@ -32,19 +32,17 @@ const createStore = () => {
                             postArray.push({ ...res.data[key], id: key })
                         }
                         vuexContext.commit('setPosts', postArray)
-                    }),
-                    axios.get('https://howto-a9089.firebaseio.com/categories.json')
-                        .then(res => {
-                        vuexContext.commit('setCategories', res.data)
                     })
+                    // axios.get('https://howto-a9089.firebaseio.com/categories.json')
+                    //     .then(res => {
+                    //     vuexContext.commit('setCategories', res.data)
+                    // })
             },
             authenticateUser(vuexContext, authData) {
                 let authUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + process.env.fbAPI
-            
                 if (!authData.isLogin) {
                     authUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" + process.env.fbAPI
                 }
-
                 axios.post(authUrl ,{
                     email: authData.email,
                     password: authData.password,
