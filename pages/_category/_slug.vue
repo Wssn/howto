@@ -1,7 +1,7 @@
 <template>
     <section class="container mt-5" itemscope itemtype="http://schema.org/Article">
       <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-8 offset-md-2">
           <h1 itemprop="name">{{ result.title }}</h1>
           <a class="button-shadow pink mb-4 mt-3">{{ result.category }}</a>
           <div class="box" itemprop="articleBody">
