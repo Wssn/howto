@@ -56,6 +56,13 @@
                     </b-form-input>
                 </b-form-group>
             </div>
+            <b-form-group label="Url">
+                <b-form-input type="text"
+                            
+                            v-model="editedPost.slug"
+                            placeholder="Url">
+                </b-form-input>
+            </b-form-group>
             <b-form-group label="Yazar">
                 <b-form-input type="text"
                             
