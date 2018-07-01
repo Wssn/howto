@@ -110,9 +110,7 @@ const createStore = () => {
             },
             getCategories(state) {
                 return state.categories
-            },
-            
-
+            }
         }
     })
 }
