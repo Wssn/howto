@@ -4,7 +4,7 @@
         <div class="col-md-8 offset-md-2">
           <h1 itemprop="name">{{ result.title }}</h1>
           <a class="button-shadow pink mb-4 mt-3">{{ result.category }}</a>
-          <div class="box" itemprop="articleBody">
+          <div class="box mb-4" itemprop="articleBody">
             <div v-for="step in result.steps" :key="step.id" class="step-container d-flex"> 
               <div class="step-left mr-3">
                 <span class="step-count">{{ step.id }}</span>

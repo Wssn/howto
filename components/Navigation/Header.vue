@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" class="main-nav">
+  <b-navbar toggleable="md" class="main-nav justify-content-center">
       <!-- <b-navbar-toggle target="nav_collapse"></b-navbar-toggle> -->
       <nuxt-link class="navbar-brand" to="/"><img src="@/assets/img/logo.svg" alt=""></nuxt-link>
       <!-- <b-collapse is-nav id="nav_collapse">
