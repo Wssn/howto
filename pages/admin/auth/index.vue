@@ -5,7 +5,7 @@
           <input type="password" placeholder="Password" v-model="password">
           <button type="submit">{{ isLogin ? 'Login' : 'Sign Up' }}</button>
       </form>
-          <button @click="isLogin = !isLogin">Switch to {{ isLogin ? 'SignUp' : 'Login' }}</button>
+          <!-- <button @click="isLogin = !isLogin">Switch to {{ isLogin ? 'SignUp' : 'Login' }}</button> -->
   </section>
 </template>
 
