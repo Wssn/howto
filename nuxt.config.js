@@ -11,7 +11,7 @@ module.exports = {
     title: 'Basitceogren.com - Adım adım nasıl yapılır',
     meta: [
       { charset: 'utf-8' },
-      { name="google-site-verification", content="MXmf95C8M7wRsTYCjBekmFlELU9npM7EDZBn0qEGtQo" },
+      { name: "google-site-verification", content: "MXmf95C8M7wRsTYCjBekmFlELU9npM7EDZBn0qEGtQo" },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Teknoloji, hayat, spor, yemek ve birçok kategoride adım adım nasıl yapılır tavsiyeleri.' }
     ],
