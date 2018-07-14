@@ -25,6 +25,7 @@ const createStore = () => {
         },
         actions: {
             nuxtServerInit(vuexContext) {
+                vuexContext.dispatch('loadCategories');
                 return axios.get('https://basitceogren-1867a.firebaseio.com/posts.json')
                     .then(res => {
                         const postArray = []
@@ -32,6 +33,8 @@ const createStore = () => {
                             postArray.push({ ...res.data[key], id: key })
                         }
                         vuexContext.commit('setPosts', postArray)
+                        
+
                     })
                     // axios.get('https://howto-a9089.firebaseio.com/categories.json')
                     //     .then(res => {
@@ -61,6 +64,17 @@ const createStore = () => {
                 .catch(e => {
                     console.log(e);
                 });
+            },
+            loadCategories(vuexContext) {
+                return axios.get('https://basitceogren-1867a.firebaseio.com/categories.json')
+                .then(res => {
+                    const categories = []
+                    console.log(res.data)
+                    for (const key in res.data) {
+                        categories.push({ ...res.data[key], id: key })
+                    }
+                    vuexContext.commit('setCategories', categories)
+                })
             },
             initAuth(vuexContext, req) {
                 let token;
