@@ -1,3 +1,5 @@
+@import 'responsive';
+
 // colors
 $purple: #3D344F;
 $blue: #286EFA;
@@ -122,3 +124,42 @@ p {
         color: $pink;        
     }
 }
+
+.share-button {
+    font-size: 13px;
+    border-radius: 5px;
+    font-weight: 600;
+    padding: 8px 20px;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+
+    svg {
+        margin-right: 8px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    &.facebook {
+        box-shadow: 0 4px 0 0 #2E477D;
+        background: #39579A;
+    }
+
+    &.twitter {
+        background: #69ACE0;
+        box-shadow: 0 4px 0 0 #5A93BF;
+    }
+
+    &.whatsapp {
+        background: #25D366;
+        box-shadow: 0 4px 0 0 #21B557;
+        // display: none;
+    }
+}
+
